@@ -4,8 +4,8 @@ namespace PeliculasAPI.Repositorio.IRepositorio
 {
     public interface ICategoriaRepositorio
     {
-        ICollection<Categoria> Categorias();
-        Categoria getCategoria(int categoriaId);
+        ICollection<Categoria> GetCategorias();
+        Categoria GetCategoria(int categoriaId);
         bool ExisteCategoria(int categoriaId);
         bool ExisteCategoria(string Nombre);
         bool CrearCategoria(Categoria categoria);

@@ -28,12 +28,12 @@ namespace PeliculasAPI.Repositorio
             return Guardar();
         }
 
-        public Categoria getCategoria(int categoriaId)
+        public Categoria GetCategoria(int categoriaId)
         {
             return _context.Categoria.FirstOrDefault(x => x.CategoriaId == categoriaId);
         }
 
-        public ICollection<Categoria> Categorias()
+        public ICollection<Categoria> GetCategorias()
         {
             return _context.Categoria.OrderBy(x => x.Nombre).ToList();
         }

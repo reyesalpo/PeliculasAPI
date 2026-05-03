@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PeliculasAPI.Modelos.Dtos;
+using PeliculasAPI.Repositorio.IRepositorio;
 
 namespace PeliculasAPI.Controllers
 {
@@ -7,6 +10,29 @@ namespace PeliculasAPI.Controllers
     [ApiController]
     public class CategoriasController : ControllerBase
     {
+        private readonly ICategoriaRepositorio _ctrepo;
+        private readonly IMapper _mapper;
 
+        public CategoriasController(ICategoriaRepositorio ctrepo, IMapper mapper)
+        {
+            _ctrepo = ctrepo;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult GetCategorias()
+        {
+            var listaCategorias = _ctrepo.GetCategorias();
+
+            var listaCategoriasDto = new List<CategoriaDto>();
+
+            foreach (var lista in listaCategorias) {
+                listaCategoriasDto.Add(_mapper.Map<CategoriaDto>(lista));
+            }
+
+            return Ok(listaCategoriasDto);
+        }
     }
 }

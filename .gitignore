@@ -1,14 +1,11 @@
-# .NET
+# Build results
 bin/
 obj/
 
-# User-specific files
-*.user
-*.rsuser
-*.suo
-
 # Visual Studio
 .vs/
+*.user
+*.suo
 
 # Logs
 *.log
@@ -16,3 +13,14 @@ obj/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Rider / VSCode
+.idea/
+.vscode/
+
+# Publish
+publish/
+
+# Debug folders
+Debug/
+Release/
