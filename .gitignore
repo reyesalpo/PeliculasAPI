@@ -1,11 +1,11 @@
-# Build results
-bin/
-obj/
-
 # Visual Studio
 .vs/
 *.user
 *.suo
+
+# Build
+bin/
+obj/
 
 # Logs
 *.log
@@ -20,7 +20,3 @@ Thumbs.db
 
 # Publish
 publish/
-
-# Debug folders
-Debug/
-Release/
