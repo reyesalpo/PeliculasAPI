@@ -1,0 +1,18 @@
+# .NET
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+
+# Visual Studio
+.vs/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
