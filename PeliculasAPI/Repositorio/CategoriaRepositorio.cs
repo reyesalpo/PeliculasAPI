@@ -17,6 +17,14 @@ namespace PeliculasAPI.Repositorio
         public bool ActualizarCategoria(Categoria categoria)
         {
             categoria.FechaCreacion = DateTime.Now;
+
+            // Arreglar problema del update con el put
+            var categoriaExistente = _context.Categoria.Find(categoria.CategoriaId);
+
+            if(categoriaExistente == null)
+            {
+                _context.Entry(categoria).CurrentValues.SetValues(categoria);
+            }
             _context.Categoria.Update(categoria);
             return Guardar();
         }

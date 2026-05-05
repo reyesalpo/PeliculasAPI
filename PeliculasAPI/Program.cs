@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 // Agregar los repositorios
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
-
+builder.Services.AddScoped<IPeliculaRepositorio, PeliculaRepositorio>();
 
 
 

@@ -12,5 +12,6 @@ namespace PeliculasAPI.Data
 
         // Aqui pasar todas las entidades (Modelos)
         public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Pelicula> Pelicula { get; set; }
     }
 }

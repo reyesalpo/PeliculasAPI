@@ -11,6 +11,9 @@ namespace PeliculasAPI.PeliculasMapper
             // Mappear los modelos con el Dtos
             CreateMap<Categoria, CategoriaDto>().ReverseMap();
             CreateMap<Categoria, CrearCategoriaDto>().ReverseMap();
+
+            CreateMap<Pelicula, PeliculaDto>().ReverseMap();
+            CreateMap<Pelicula, CrearPeliculaDto>().ReverseMap();
         }
     }
 }
