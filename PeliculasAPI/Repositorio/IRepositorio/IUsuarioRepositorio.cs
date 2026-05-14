@@ -9,6 +9,6 @@ namespace PeliculasAPI.Repositorio.IRepositorio
         Usuario GetUsuario(int categoriaId);
         bool IsUniQueUSer(string usuario);
         Task<UsuarioLoginRespuestaDto> GetUsuarioLogin(UsuarioLoginDto usuarioLoginDto);
-        Task<bool> Registro(UsuarioRegistroDto usuarioRegistroDto);
+        Task<Usuario> Registro(UsuarioRegistroDto usuarioRegistroDto);
     }
 }

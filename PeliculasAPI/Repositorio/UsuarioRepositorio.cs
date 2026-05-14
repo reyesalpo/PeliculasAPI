@@ -2,6 +2,7 @@
 using PeliculasAPI.Modelos;
 using PeliculasAPI.Modelos.Dtos;
 using PeliculasAPI.Repositorio.IRepositorio;
+using XSystem.Security.Cryptography;
 
 namespace PeliculasAPI.Repositorio
 {
@@ -29,13 +30,42 @@ namespace PeliculasAPI.Repositorio
             return !_context.Usuario.Any(x => x.NombreUsuario.ToLower() == usuario.ToLower());
         }
 
-        public Task<bool> Registro(UsuarioRegistroDto usuarioRegistroDto)
+        public async Task<Usuario> Registro(UsuarioRegistroDto usuarioRegistroDto)
         {
-            throw new NotImplementedException();
+            var paswordEncirptado = obtenermd5(usuarioRegistroDto.Password);
+
+            Usuario usuario = new Usuario()
+            {
+                NombreUsuario = usuarioRegistroDto.NombreUsuario,
+                Password = paswordEncirptado,
+                Nombre = usuarioRegistroDto.Nombre,
+                Role = usuarioRegistroDto.Role
+            };
+
+            _context.Usuario.Add(usuario);
+            await _context.SaveChangesAsync();
+            usuario.Password = paswordEncirptado;
+            return usuario;
         }
+
+        // Encripatar la contrasenia
+        public static string obtenermd5(string password)
+        { 
+            MD5CryptoServiceProvider x = new MD5CryptoServiceProvider();
+
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(password);
+            data = x.ComputeHash(data);
+            string resp = "";
+            for (int i = 0; i < data.Length; i++) { 
+                resp += data[i].ToString("x2").ToLower();
+            }
+            return resp;
+        }
+
         public Task<UsuarioLoginRespuestaDto> GetUsuarioLogin(UsuarioLoginDto usuarioLoginDto)
         {
             throw new NotImplementedException();
         }
+         
     }
 }

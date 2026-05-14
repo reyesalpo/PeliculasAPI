@@ -21,10 +21,13 @@ namespace PeliculasAPI.Modelos.Dtos
 
         [Required(ErrorMessage = "El password es obligatorio")]
         public string Password { get; set; }
+        public string Role { get; set; }
     }
     public class UsuarioLoginDto
     {
+        [Required(ErrorMessage = "El usuario es obligatorio")]
         public string NombreUsuario { get; set; }
+        [Required(ErrorMessage = "El password es obligatorio")]
         public string Password { get; set; }
     }
 
