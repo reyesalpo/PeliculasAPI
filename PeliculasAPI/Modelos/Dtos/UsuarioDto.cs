@@ -33,9 +33,9 @@ namespace PeliculasAPI.Modelos.Dtos
 
     public class UsuarioLoginRespuestaDto
     {
-        public UsuariosDatosDto Usuario { get; set; }
+        public Usuario Usuario { get; set; }
         public string Role { get; set; }
-        public int Token { get; set; }
+        public string Token { get; set; }
     }
 
     public class UsuariosDatosDto
