@@ -15,6 +15,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(x => x.AddPolicy("PoliticaCors", build =>
+{
+    build.WithOrigins("http://localhost:4200") // Permitir solo el origen de Angular
+    .AllowAnyMethod() // Permitir cualquier metodo
+    .AllowAnyHeader(); // Permitir cualquier metodo y cabecera
+}));
+
 // Agregar los repositorios
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<IPeliculaRepositorio, PeliculaRepositorio>();
@@ -36,6 +43,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Agregar el uso de CORS
+app.UseCors("PoliticaCors");
 
 app.UseAuthorization();
 
